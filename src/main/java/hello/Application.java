@@ -49,7 +49,7 @@ public class Application {
         // Integer width = arenaUpdate.arena.dims.get(0);
         // Integer height = arenaUpdate.arena.dims.get(1);
         writeCommittedStream.sendArena(arenaUpdate.arena);
-        String myUrl = "https://35.227.242.25.sslip.io";
+        String myUrl = "https://35.227.242.25.sslip.io/";
         PlayerState myState = arenaUpdate.arena.state.get(myUrl);
 
         counter = counter < 10000 ? counter + 1 : 0;
