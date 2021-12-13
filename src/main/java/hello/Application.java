@@ -62,6 +62,7 @@ public class Application {
     counter = counter < 10000 ? counter + 1 : 0;
 
     if (myState == null) {
+        System.err.print("Got null for myState");
         return "T";
     }
 
