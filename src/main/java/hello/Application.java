@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 @SpringBootApplication
 @RestController
@@ -57,11 +56,17 @@ public class Application {
   public String index(@RequestBody ArenaUpdate arenaUpdate) {
     // Integer width = arenaUpdate.arena.dims.get(0);
     // Integer height = arenaUpdate.arena.dims.get(1);
-    PlayerState myState = arenaUpdate.arena.state.get("https://java-springboot-j3wzqpoupa-uc.a.run.app");
-    counter += 1;
+    String myUrl = "https://35.227.242.25.sslip.io";
+    PlayerState myState = arenaUpdate.arena.state.get(myUrl);
+
+    counter = counter < 10000 ? counter + 1 : 0;
+
+    if (myState == null) {
+        return "T";
+    }
 
     if (myState.wasHit) {
-        if (counter % 2 == 0) {
+        if (counter % 3 == 0) {
             return "L";
         } else {
             return "F";
@@ -80,7 +85,6 @@ public class Application {
     } else {
         return "T";
     }
-
   }
 
   private Integer prevScore = -100;
